@@ -23,8 +23,8 @@
             // data
             let name = "Peggy"
             let age = 18
-            let tel 2= "013"
-            let x = d
+            let tel = "013"
+            // let x = d
             
             // 方法
             function changeName(){
