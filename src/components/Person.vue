@@ -4,9 +4,16 @@
 <script lang="ts">
     export default{
         name:'Person', //元件名
-        
+        // vue3中的setup比vue2的beforeCreate更優先執行
+        // beforeCreate(){
+        //     console.log("beforeCreate");
+            
+        // },
         setup(){
-            // setup中不能寫this，this是undefined
+            // vue3中的setup比vue2的beforeCreate更優先執行
+            // console.log(this);
+            
+            // setup中不能寫this，this是undefined，在vue3中this被弱化了
             // data
             let name = "Peggy"
             let age = 18
@@ -14,19 +21,23 @@
             
             // 方法
             function changeName(){
-                console.log(1);
+                
                 
                 name="Peggy2"
+                console.log(name);
+                
             }
             function changeAge(){
-                console.log(2);
+                
                 
                 age=5
+                console.log(age);
             }
             function showTel(){
-                console.log(3);
+                
                 
                 alert(tel)
+                console.log(tel);
             }
             return{
                 name:name,
@@ -35,6 +46,8 @@
                 changeAge,
                 showTel
             }
+            // return返回值也可以是函式
+            // return () => 'haha'
         }
     }
 </script>
