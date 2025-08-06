@@ -4,20 +4,27 @@
 <script lang="ts">
     export default{
         name:'Person', //元件名
-        // vue3中的setup比vue2的beforeCreate更優先執行
-        // beforeCreate(){
-        //     console.log("beforeCreate");
-            
-        // },
+        data(){
+            return{
+                a:100,
+                c:this.name,
+                d:900
+            }
+        },
+        methods:{
+            b(){
+                console.log("b")
+                
+            }
+        },
         setup(){
-            // vue3中的setup比vue2的beforeCreate更優先執行
-            // console.log(this);
             
             // setup中不能寫this，this是undefined，在vue3中this被弱化了
             // data
             let name = "Peggy"
             let age = 18
-            let tel = "013"
+            let tel 2= "013"
+            let x = d
             
             // 方法
             function changeName(){
@@ -60,6 +67,11 @@
         <button @click="changeName">修改名字</button>
         <button @click="changeAge">修改年齡</button>
         <button @click="showTel">顯示電話</button>
+        <hr>
+        <h2>測試:{{a}}</h2>
+        <h2>測試:{{c}}</h2>
+        <h2>測試:{{d}}</h2>
+        <button @click="b">測試</button>
     </div>
 </template>
 <!-- html結構 end -->
