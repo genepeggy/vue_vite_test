@@ -3,20 +3,7 @@
 <!-- js或ts start -->
 <script lang="ts">
     export default{
-        name:'Person', //元件名
-        data(){
-            return{
-                a:100,
-                c:this.name,
-                d:900
-            }
-        },
-        methods:{
-            b(){
-                console.log("b")
-                
-            }
-        },
+
         setup(){
             
             // setup中不能寫this，this是undefined，在vue3中this被弱化了
