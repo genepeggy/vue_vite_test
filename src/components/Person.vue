@@ -1,16 +1,20 @@
 <!-- Vue2 -->
 <!-- Person.vue -->
- 
+
 <!-- js或ts start -->
 
 <!-- 拿來設定component名字 -->
-<script lang="ts">
+<!-- <script lang="ts">
     export default{
         name:"person",
     }
-</script>
+</script> -->
 <!-- 拿來設定compositionAPI -->
 <script lang='ts' setup>
+    // 拿來設定component名字->vue3的新寫法
+    defineOptions({
+    name: "PersonTest"
+    })
     //數據 
     let name = "Peggy"
     let age = 18
