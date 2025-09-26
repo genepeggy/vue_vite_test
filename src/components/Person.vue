@@ -11,26 +11,31 @@
 </script> -->
 <!-- 拿來設定compositionAPI -->
 <script lang='ts' setup>
-    // 拿來設定component名字->vue3的新寫法
+    import {ref} from 'vue'
+    // defineOptions()拿來設定component名字->vue3的新寫法
     defineOptions({
     name: "PersonTest"
     })
     //數據 
-    let name = "Peggy"
-    let age = 18
+    let name = ref("Peggy")
+    let age = ref(18)
     let tel = "013"
     // 不需要寫return
 
+    console.log(name);
+    console.log(age);
+    console.log(tel);
+    
+
      // 方法
     function changeName(){
-        name="Peggy2"
+        name.value="p7"
         console.log(name);
         
     }
     function changeAge(){
-        
-        
-        age=5
+
+        age.value += 1
         console.log(age);
     }
     function showTel(){
