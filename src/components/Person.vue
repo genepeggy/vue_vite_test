@@ -11,45 +11,43 @@
 </script> -->
 <!-- 拿來設定compositionAPI -->
 <script lang='ts' setup>
-    //物件用reactive 
-    import { reactive } from 'vue';
+    // ref可以定義基本類型數據、也可以定義對象類型數據
+    import { reactive, ref } from 'vue';
 
     // 數據
-    let car = reactive({brand:'BMW',price:100})
-    console.log(car);
+    let car = ref({brand:'BMW',price:100})
+    // console.log(car);
     // 結果:Proxy(Object) {brand: 'BMW', price: 100}
     // let car={brand:'BMW',price:100}
     // console.log(car);
     // 結果:{brand: 'BMW', price: 100}
     // console.log(Proxy);
     // js原生的內建函數
-    let games = reactive([
+    let games = ref([
         {id:'game01',name:'genshin'},
         {id:'game02',name:'star rail'},
         {id:'game03',name:'project sekai'},
     ])
+    let obj=reactive({x:999})
 
-    let obj = reactive({
-        a:{
-            b:{
-                c:666
-            }
-        }
-    })
-    
+    console.log(car);
 
+    console.log(obj);
+    // 結果:RefIml(
+    // value->是一個Proxy->用reactive定義
+    // )
+    // 因為RefIml最外層是用ref定義，所以也可以解釋成ref可以用來定義對象類型數據(實際上是RefIml內的value是一個Proxy在運作，不是外層的RefIml在運作)
+    // ->同理可證也適用深層次數據(巢狀)
     // 方法
     function changePrice(){
-        car.price += 10
-        console.log(car.price);
+        car.value.price += 10
+        console.log(car.value.price);
         
     }
     function changeFirstGameName(){
-        games[0].name="原神 空月之歌"
+        games.value[0].name="原神 空月之歌"
     }
-    function changeObj(){
-        obj.a.b.c=999
-    }
+    
 </script>
 <!-- js或ts end -->
 
@@ -68,9 +66,7 @@
             <li v-for="item in games" :key="item.id">{{ item.name }}</li>
         </ul>
         <button @click="changeFirstGameName">修改第一個遊戲的名字</button>
-        <hr>
-        <h2>測試:{{obj.a.b.c}}</h2>
-        <button @click="changeObj">測試修改obj</button>
+        
     </div>
 </template>
 <!-- html結構 end -->
